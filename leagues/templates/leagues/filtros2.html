@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>Sports Leagues</title>
+</head>
+
+<body>
+    <li><a href="/">index</a></li>
+    <li><a href="filtros">filtros</a></li>
+    <li><a href="filtros2">filtros2</a></li>
+
+    <h2>1- Todos los equipos en la Atlantic Soccer Conference (ASC)</h2>
+    <ol>
+        {% for equipo in equipos_asc %} {% for liga in ligas_asc %}
+        <li>{{ equipo.team_name }} - {{liga.name}}</li>
+        {% endfor %} {% endfor %}
+    </ol>
+
+    <h2>2- Todos los jugadores (actuales) en los Boston Penguins</h2>
+    <ol>
+        {% for jugador in jugadores_bp %}
+        <li>{{ jugador.first_name }} {{jugador.last_name}}</li>
+        {% endfor %}
+    </ol>
+
+
+    <p>3... todos los jugadores (actuales) en la International Collegiate Baseball Conference </p>
+    <p>4... todos los jugadores (actuales) en la Conferencia Americana de Fútbol Amateur con el apellido "López" </p>
+    <p>5... todos los jugadores de fútbol</p>
+    <p>6... todos los equipos con un jugador (actual) llamado "Sophia" </p>
+    <p>7... todas las ligas con un jugador (actual) llamado "Sophia"</p>
+    <p>8... todos con el apellido "Flores" que NO (actualmente) juegan para los Washington Roughriders </p>
+    <p>9... todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado </p>
+    <p>10... todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba </p>
+    <p>11... todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings </p>
+    <p>12... cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts </p>
+    <p>13... todos llamados "Joshua" que alguna vez han jugado en la Federación Atlántica de Jugadores de Béisbol Amateur </p>
+    <p>14... todos los equipos que han tenido 12 o más jugadores, pasados y presentes. (SUGERENCIA: busque la función de anotación de Django)</p>
+    <p>15... todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado</p>
+</body>
+
+</html>

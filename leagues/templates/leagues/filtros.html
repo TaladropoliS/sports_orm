@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>Sports Leagues</title>
+</head>
+
+<body>
+    <li><a href="/">index</a></li>
+    <li><a href="filtros">filtros</a></li>
+    <li><a href="filtros2">filtros2</a></li>
+
+    <h2>1- Ligas de Baseball</h2>
+    <ol>
+        {% for liga in ligas_deisbol %}
+        <li>{{liga.name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>2- Ligas de Mujeres</h2>
+    <ol>
+        {% for liga in ligas_mujeres %}
+        <li>{{liga.name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>3- Ligas de Hockey</h2>
+    <ol>
+        {% for liga in ligas_hockey %}
+        <li>{{liga.name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>4- Ligas que no son de futbol</h2>
+    <ol>
+        {% for liga in ligas_no_futbol %}
+        <li>{{liga.name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>5- Ligas que son Conferencias</h2>
+    <ol>
+        {% for liga in ligas_conferencias %}
+        <li>{{liga.name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>6- Ligas de la región Atlántica</h2>
+    <ol>
+        {% for liga in ligas_atlanticas %}
+        <li>{{liga.name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>7- Equipos con sede en Dallas</h2>
+    <ol>
+        {% for equipo in equipos_dallas %}
+        <li>{{equipo.team_name}} de {{equipo.location}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>8- Equipos con <i>"Raptors"</i> en su nombre</h2>
+    <ol>
+        {% for equipo in equipos_raptors %}
+        <li>{{equipo.location}} {{equipo.team_name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>9- Equipos con <i>"City"</i> en su ubicacion</h2>
+    <ol>
+        {% for equipo in equipos_city %}
+        <li>{{equipo.location}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>10- Equipos que su nombre empieza con <i>"T"</i></h2>
+    <ol>
+        {% for equipo in equipos_t %}
+        <li>{{equipo.team_name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>11- Equipos ordenados alfabéticamente por ubicación</h2>
+    <ol>
+        {% for equipo in equipos_ordenados %}
+        <li>{{equipo.team_name}} - {{equipo.location}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>12- Equipos ordenados por nombre de Equipo en orden alfabético inverso</h2>
+    <ol>
+        {% for equipo in equipos_inv %}
+        <li>{{equipo.team_name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>13- Jugadores con apellido <i>"Cooper"</i></h2>
+    <ol>
+        {% for cooper in jugadores_cooper %}
+        <li>{{cooper.last_name}} {{cooper.first_name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>14- Jugadores con nombre <i>"Joshua"</i></h2>
+    <ol>
+        {% for joshua in jugadores_joshua %}
+        <li>{{joshua.first_name}} {{joshua.last_name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>15- Jugadores con apellido <i>"Cooper"</i>, EXCEPTO aquellos con nombre <i>"Joshua"</i></h2>
+    <ol>
+        {% for joshua_cooper in jugadores_joshua_cooper %}
+        <li>{{joshua_cooper.first_name}} {{joshua_cooper.last_name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>16- Jugadores con nombre <i>"Alexander"</i>o <i>"Wyatt"</i></h2>
+    <ol>
+        {% for aow in jugadores_aow %}
+        <li>{{aow.first_name}} {{aow.last_name}}</li>
+        {% endfor %}
+    </ol>
+
+</body>
+
+</html>
