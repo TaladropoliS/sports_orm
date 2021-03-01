@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import League, Team, Player
+from django.db.models import Q, Max, Count, F
 
 from . import team_maker
 
@@ -60,14 +61,17 @@ def filtros2(request):
 	ligas_asc = League.objects.filter(name__iexact='Atlantic Soccer Conference')
 	equipos_asc = Team.objects.filter(league__in=ligas_asc)
 
-	boston_pinguins = Team.objects.filter(location__iexact='Boston')&Team.objects.filter(team_name__iexact='Pinguins')
-	jugadores_bp = Player.objects.filter(curr_team__in=boston_pinguins)
+	boston_pinguins = Team.objects.filter(Q(team_name__icontains="penguins") & Q(location__icontains="boston"))
+	jugadores_bp = Player.objects.filter(Q(curr_team__team_name__icontains="penguins") & Q(curr_team__location__icontains="boston"))
 
-	print('boston_pinguins', boston_pinguins)
-	print('jugadores_bp', jugadores_bp)
-	# temp2 = League.objects.filter(name__iexact="Conferencia Americana de Fútbol Amateur")
-	# temp1 = Team.objects.filter(league__in=temp2)
-	# temp = Player.objects.filter(curr_team__in=temp1).filter(last_name__iexact="López")
+	jugadores_icbc = Player.objects.filter(curr_team__league__name__icontains="International Collegiate Baseball Conference")
+
+	jugadores_cafa = Player.objects.filter(Q(curr_team__league__name__icontains="American Conference of Amateur Football") & Q(
+        last_name__icontains="lopez"))
+
+	jugadores_futbol = Player.objects.filter(curr_team__league__sport__icontains="Football")
+
+	jugadores_sophia = Player.objects.filter(first_name__icontains="sophia")
 
 	context={
 		"equipos_asc": equipos_asc,
@@ -75,5 +79,39 @@ def filtros2(request):
 
 		'jugadores_bp': jugadores_bp,
 		'boston_pinguins': boston_pinguins,
+
+		'jugadores_icbc': jugadores_icbc,
+
+		'jugadores_cafa': jugadores_cafa,
+
+		'jugadores_futbol': jugadores_futbol,
+
+		'jugadores_sophia': jugadores_sophia,
 	}
 	return render(request, "leagues/filtros2.html", context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,11 +25,34 @@
         {% endfor %}
     </ol>
 
+    <h2>3- Todos los jugadores (actuales) en la International Collegiate Baseball Conference (icbc)</h2>
+    <ol>
+        {% for jugador in jugadores_icbc %}
+        <li>{{ jugador.first_name }} {{jugador.last_name}}</li>
+        {% endfor %}
+    </ol>
 
-    <p>3... todos los jugadores (actuales) en la International Collegiate Baseball Conference </p>
-    <p>4... todos los jugadores (actuales) en la Conferencia Americana de Fútbol Amateur con el apellido "López" </p>
-    <p>5... todos los jugadores de fútbol</p>
-    <p>6... todos los equipos con un jugador (actual) llamado "Sophia" </p>
+    <h2>4- Todos los jugadores (actuales) en la Conferencia Americana de Fútbol Amateur (cafa) con el apellido "López"</h2>
+    <ol>
+        {% for jugador in jugadores_cafa %}
+        <li>{{ jugador.first_name }} {{jugador.last_name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>5- Todos los jugadores de Fútbol</h2>
+    <ol>
+        {% for jugador in jugadores_futbol %}
+        <li>{{ jugador.first_name }} {{jugador.last_name}}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>6- Todos los equipos con un jugador (actual) llamado "Sophia"</h2>
+    <ol>
+        {% for jugador in jugadores_sophia %}
+        <li>{{ jugador.first_name }} {{jugador.last_name}}</li>
+        {% endfor %}
+    </ol>
+
     <p>7... todas las ligas con un jugador (actual) llamado "Sophia"</p>
     <p>8... todos con el apellido "Flores" que NO (actualmente) juegan para los Washington Roughriders </p>
     <p>9... todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado </p>
