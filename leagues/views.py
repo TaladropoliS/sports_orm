@@ -133,6 +133,7 @@ def filtros2(request):
 		'jugadores_gato': jugadores_gato,
 
 		'jugadores_anteriores_wichita': jugadores_anteriores_wichita,
+
 	}
 	return render(request, "leagues/filtros2.html", context)
 
