@@ -47,17 +47,61 @@
     </ol>
 
     <h2>6- Todos los equipos con un jugador (actual) llamado "Sophia"</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Jugador</th>
+                <th scope="col">Equipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+            <tr>
+                <td>Sophia</td>
+                <td>{{ equipo.team_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>7... todas las ligas con un jugador (actual) llamado "Sophia"</h2>
     <ol>
-        {% for jugador in jugadores_sophia %}
-        <li>{{ jugador.first_name }} {{jugador.last_name}}</li>
+        {% for liga in ligas_sophia %}
+        <li>{{ liga.name }}</li>
         {% endfor %}
     </ol>
 
-    <p>7... todas las ligas con un jugador (actual) llamado "Sophia"</p>
-    <p>8... todos con el apellido "Flores" que NO (actualmente) juegan para los Washington Roughriders </p>
-    <p>9... todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado </p>
-    <p>10... todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba </p>
-    <p>11... todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings </p>
+    <h2>8... todos con el apellido "Flores" que NO (actualmente) juegan para los Washington Roughriders </h2>
+    <ol>
+        {% for flores in flores_no %}
+        <li>{{ flores.first_name }} {{ flores.last_name }}</li>
+        {% endfor %}
+    </ol>
+
+
+    <h2>9... todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado </h2>
+    <ol>
+        {% for samuel in equipos_samuel_evans %}
+        <li>{{ samuel.team_name }}</li>
+        {% endfor %}
+    </ol>
+
+
+    <h2>10... todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba </h2>
+    <ol>
+        {% for gatoss in jugadores_gato %}
+        <li>{{ gatoss.first_name }} {{ gatoss.last_name }}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>11... todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings </h2>
+    <ol>
+        {% for jug in jugadores_anteriores_wichita %}
+        <li>{{ jug.first_name }} {{ jug.last_name }}</li>
+        {% endfor %}
+    </ol>
+
+
     <p>12... cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts </p>
     <p>13... todos llamados "Joshua" que alguna vez han jugado en la Federación Atlántica de Jugadores de Béisbol Amateur </p>
     <p>14... todos los equipos que han tenido 12 o más jugadores, pasados y presentes. (SUGERENCIA: busque la función de anotación de Django)</p>

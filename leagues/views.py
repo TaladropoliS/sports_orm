@@ -72,6 +72,40 @@ def filtros2(request):
 	jugadores_futbol = Player.objects.filter(curr_team__league__sport__icontains="Football")
 
 	jugadores_sophia = Player.objects.filter(first_name__icontains="sophia")
+	lista_team_id_sophia = []
+	equipos = []
+	for team in jugadores_sophia.values():
+		lista_team_id_sophia.append(team['curr_team_id'])
+	for x in lista_team_id_sophia:
+		equipos.append(Team.objects.get(id=x))
+
+	jugadores_sophia = Player.objects.filter(first_name__icontains="sophia")
+	lista_team_id_sophia = []
+	equipos = []
+	lista_ligas_id_sophia = []
+	ligas_sophia = []
+	for team in jugadores_sophia.values():
+		lista_team_id_sophia.append(team['curr_team_id'])
+	for x in lista_team_id_sophia:
+		equipos.append(Team.objects.get(id=x))
+	for equipo in equipos:
+		lista_ligas_id_sophia.append(equipo.league_id)
+	for y in lista_ligas_id_sophia:
+		if y in ligas_sophia:
+			break
+		else:
+			ligas_sophia.append(League.objects.get(id=y))
+
+	flores_no = Player.objects.filter(last_name__icontains="flores").exclude\
+		(curr_team__team_name__icontains="roughriders")
+
+	jugadores_samuel_evans = Player.objects.filter(first_name="Samuel", last_name="Evans")
+	equipos_samuel_evans = Player.objects.get(first_name="Samuel", last_name="Evans").all_teams.values()
+
+	jugadores_gato = Team.objects.get(location="Manitoba", team_name="Tiger-Cats").all_players.values()
+
+	jugadores_todos_wichita  = Team.objects.get(location="Wichita", team_name="Vikings").all_players.all()
+	jugadores_anteriores_wichita = jugadores_todos_wichita.exclude(curr_team__team_name="Vikings", curr_team__location="Wichita")
 
 	context={
 		"equipos_asc": equipos_asc,
@@ -87,6 +121,18 @@ def filtros2(request):
 		'jugadores_futbol': jugadores_futbol,
 
 		'jugadores_sophia': jugadores_sophia,
+		'equipos': equipos,
+
+		'jugadores_sophia': jugadores_sophia,
+		'ligas_sophia':ligas_sophia,
+
+		'flores_no': flores_no,
+
+		'equipos_samuel_evans':equipos_samuel_evans,
+
+		'jugadores_gato': jugadores_gato,
+
+		'jugadores_anteriores_wichita': jugadores_anteriores_wichita,
 	}
 	return render(request, "leagues/filtros2.html", context)
 
