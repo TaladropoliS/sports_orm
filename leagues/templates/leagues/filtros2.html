@@ -101,11 +101,34 @@
         {% endfor %}
     </ol>
 
+    <h2>12... cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts </h2>
+    <ol>
+        {% for equipos in equipos_ant_jacob_gray %}
+        <li>{{ equipos.team_name }}</li>
+        {% endfor %}
+    </ol>
 
-    <p>12... cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts </p>
-    <p>13... todos llamados "Joshua" que alguna vez han jugado en la Federación Atlántica de Jugadores de Béisbol Amateur </p>
-    <p>14... todos los equipos que han tenido 12 o más jugadores, pasados y presentes. (SUGERENCIA: busque la función de anotación de Django)</p>
-    <p>15... todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado</p>
+    <h2>13... todos llamados "Joshua" que alguna vez han jugado en la Federación Atlántica de Jugadores de Béisbol Amateur </h2>
+    <ol>
+        {% for joshua in jugadores_joshua %}
+        <li>{{ joshua.first_name }} {{ joshua.last_name }}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>14... todos los equipos que han tenido 12 o más jugadores, pasados y presentes. (SUGERENCIA: busque la función de anotación de Django)</h2>
+    <ol>
+        {% for eq in equipos_mas_de_12 %}
+        <li>{{ eq.team_name }}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>15... todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado</h2>
+    <ol>
+        {% for jn in jugadores_y_nro %}
+        <li>{{ jn.first_name }} {{ jn.max_teams }}</li>
+        {% endfor %}
+    </ol>
+
 </body>
 
 </html>

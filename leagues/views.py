@@ -107,6 +107,24 @@ def filtros2(request):
 	jugadores_todos_wichita  = Team.objects.get(location="Wichita", team_name="Vikings").all_players.all()
 	jugadores_anteriores_wichita = jugadores_todos_wichita.exclude(curr_team__team_name="Vikings", curr_team__location="Wichita")
 
+	jacob_gray = Player.objects.get(first_name="Jacob", last_name="Gray")
+	equipos_ant_jacob_gray = []
+	for team in jacob_gray.all_teams.values():
+		if "Colts" in team["team_name"] and "Oregon" in team["location"]:
+			break
+		else:
+			equipos_ant_jacob_gray.append(team)
+
+	jugadores_joshua = Player.objects.filter(Q(first_name__icontains="joshua") & Q(
+		all_teams__league__name__icontains="Atlantic Federation of Amateur Baseball Players"))
+
+	equipos_mas_de_12 = []
+	for team in Team.objects.all():
+		if len(team.all_players.all()) > 11:
+			equipos_mas_de_12.append(team)
+
+	jugadores_y_nro = Player.objects.annotate(max_teams=Count("all_teams")).order_by("max_teams")
+
 	context={
 		"equipos_asc": equipos_asc,
 		"ligas_asc": ligas_asc,
@@ -133,6 +151,14 @@ def filtros2(request):
 		'jugadores_gato': jugadores_gato,
 
 		'jugadores_anteriores_wichita': jugadores_anteriores_wichita,
+
+		'equipos_ant_jacob_gray': equipos_ant_jacob_gray,
+
+		'jugadores_joshua': jugadores_joshua,
+
+		'equipos_mas_de_12': equipos_mas_de_12,
+
+		'jugadores_y_nro': jugadores_y_nro,
 
 	}
 	return render(request, "leagues/filtros2.html", context)
